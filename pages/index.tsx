@@ -99,7 +99,7 @@ export default function Home() {
                 />
                 <TextField
                   id="standard-basic"
-                  label="Suscriber Address"
+                  label="Subscriber Address"
                   variant="standard"
                   onChange={(ev) =>
                     setFormState({
@@ -123,7 +123,7 @@ export default function Home() {
                   <button
                     onClick={() => {
                       handlerUpdate(formState);
-                      console.log("suscriber with formState >", formState);
+                      console.log("subscriber with formState >", formState);
                     }}
                   >
                     Add suscriber
