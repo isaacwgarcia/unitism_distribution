@@ -45,8 +45,7 @@ export async function createIndex() {
        Network: Mumbai
        Super Token: MATICx
        Index ID: ${id}
-       Now you need to wrap your funds into MATICx. Smart Contract 0x96B82B65ACF7072eFEb00502F45757F254c2a0D4
-    `
+     `
     );
     return id;
   } catch (error) {
@@ -79,7 +78,7 @@ export async function updateSubscription(formState) {
       web3ModalSf.idaV1.updateSubscriptionUnits({
         indexId: formState.indexid,
         superToken: MATICx,
-        subscriber: formState.subscriber,
+        subscriber: formState.suscriber,
         units: formState.units,
         // userData?: string
       });

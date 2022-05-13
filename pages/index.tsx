@@ -32,7 +32,7 @@ export default function Home() {
     Super Token: MATICx
     Index ID: ${formState.indexid}
     Subscriber: ${formState.suscriber}
-    Units: ${formState.units} units
+    Units: ${formState.units} shares
     
  `);
   }
