@@ -13,17 +13,20 @@ export default function Home() {
   const data: FormData = { form_data: {} };
   const [formState, setFormState] = useState(data.form_data);
   async function handler() {
-    const response = await createIndex();
-    setMessageOne(
-      `Congrats - you've just created a new Pool!
-    Network: Mumbai
-    Super Token: MATICx
-    Index ID: ${response}` +
-        `\n` +
-        `
-    MATICx 0x96B82B65ACF7072eFEb00502F45757F254c2a0D4
- `
-    );
+    await createIndex().then((response) => {
+      if (response[0]) {
+        setMessageOne(
+          `Congrats - you've just created a new Pool!
+          Network: Mumbai
+          Super Token: MATICx
+          Index ID: ${response[1]}` +
+            `\n` +
+            `
+          MATICx 0x96B82B65ACF7072eFEb00502F45757F254c2a0D4
+          `
+        );
+      }
+    });
   }
   async function handlerUpdate(formState) {
     const response = await updateSubscription(formState);
