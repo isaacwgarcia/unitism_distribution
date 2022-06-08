@@ -1,6 +1,8 @@
 import { ethers } from "ethers";
 import { Framework } from "@superfluid-finance/sdk-core";
 import Web3Modal from "web3modal";
+const MATICx = "0x42bb40bF79730451B11f6De1CbA222F17b87Afd7"; //USDCX MATICx https://docs.superfluid.finance/superfluid/protocol-developers/networks
+
 export async function createIndex(): Promise<[boolean, number]> {
   try {
     const web3Modal = new Web3Modal({
@@ -23,8 +25,6 @@ export async function createIndex(): Promise<[boolean, number]> {
 
     const signer = web3ModalProvider.getSigner();
 
-    const MATICx = "0x96B82B65ACF7072eFEb00502F45757F254c2a0D4"; //MATICx https://docs.superfluid.finance/superfluid/protocol-developers/networks
-
     const createIndexOperation = web3ModalSf.idaV1.createIndex({
       indexId: id as unknown as string,
       superToken: MATICx,
@@ -35,7 +35,7 @@ export async function createIndex(): Promise<[boolean, number]> {
       console.log(
         `Congrats - you've just created a new Pool!
         Network: Mumbai
-        Super Token: MATICx
+        Super Token: USDCx
         Pool ID: ${id}
       `
       );
@@ -64,7 +64,6 @@ export async function updateSubscription(formState) {
     provider: web3ModalProvider,
   });
 
-  const MATICx = "0x96B82B65ACF7072eFEb00502F45757F254c2a0D4";
   const signer = web3ModalProvider.getSigner();
 
   try {
@@ -83,11 +82,9 @@ export async function updateSubscription(formState) {
 
     console.log(
       `Congrats - you've just updated an Index!
-         Network: Kovan
-         Super Token: DAIx
-         Index ID: 856296430
-         Subscriber: 0xABe151555989845e50d6f9534eA223c95c1da4e6
-         Units: 25 units
+         Network: Mumbai
+         Super Token: USDCx
+         
          
       `
     );
@@ -113,7 +110,6 @@ export async function distribute(formState) {
     provider: web3ModalProvider,
   });
 
-  const MATICx = "0x96B82B65ACF7072eFEb00502F45757F254c2a0D4";
   const signer = web3ModalProvider.getSigner();
 
   try {
@@ -126,13 +122,13 @@ export async function distribute(formState) {
 
     console.log("Distributing funds to your index subscribers...");
 
-    await distributeOperation.exec(signer);
-
+    const resultDistribute = await distributeOperation.exec(signer);
+    console.log("resultDistribute >", resultDistribute);
     console.log(
       `Congrats - you've just sent funds to your index!
          Network: Mumbai
-         Super Token: Maticx
-         Index ID: 856296430
+         Super Token: USDCx
+         Index ID: ${formState.deposit_indexid}
          Total Sent: Amount 4 Shares 50 - 25
       `
     );
@@ -161,8 +157,6 @@ export async function createFlow() {
   const id = Math.floor(Math.random() * 1000000000);
 
   const signer = web3ModalProvider.getSigner();
-
-  const MATICx = "0x96B82B65ACF7072eFEb00502F45757F254c2a0D4"; //MATICx https://docs.superfluid.finance/superfluid/protocol-developers/networks
 
   // WE ARE GOING TO CREATE THE FLOW
 

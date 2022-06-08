@@ -18,12 +18,8 @@ export default function Home() {
         setMessageOne(
           `Congrats - you've just created a new Pool!
           Network: Mumbai
-          Super Token: MATICx
-          Index ID: ${response[1]}` +
-            `\n` +
-            `
-          MATICx 0x96B82B65ACF7072eFEb00502F45757F254c2a0D4
-          `
+          Super Token: USDCx
+          Index ID: ${response[1]}`
         );
       }
     });
@@ -32,7 +28,7 @@ export default function Home() {
     const response = await updateSubscription(formState);
     setMessageTwo(`Congrats - you've just updated an Index!
     Network: Mumbai
-    Super Token: MATICx
+    Super Token: USDCx
     Index ID: ${formState.indexid}
     Subscriber: ${formState.suscriber}
     Units: ${formState.units} shares
@@ -44,9 +40,9 @@ export default function Home() {
     setMessageThree(
       `Congrats - you've just sent funds to your index!
          Network: Mumbai
-         Super Token: MATICx
+         Super Token: USDCx
          Index ID:  ${formState.deposit_indexid}
-         Total Sent:  ${formState.amount}
+         
       `
     );
   }
@@ -115,7 +111,7 @@ export default function Home() {
                 &nbsp; &nbsp; &nbsp;
                 <TextField
                   id="standard-basic"
-                  label="Units"
+                  label="Units %"
                   variant="standard"
                   onChange={(ev) =>
                     setFormState({
